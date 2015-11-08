@@ -4,6 +4,12 @@ set -x
 
 usernet_count=10
 
+# Install apt repository for LXC version 1.1.x so that we can create CentOS 7 containers
+if [ ! -f /etc/apt/sources.list.d/ubuntu-lxc-lxc-stable-trusty.list ]; then
+  sudo add-apt-repository -y -s ppa:ubuntu-lxc/lxc-stable
+  sudo apt-get update
+fi
+
 sudo apt-get install -y lxc
 
 # Use dnsmasq to resolve container names on the LXC host

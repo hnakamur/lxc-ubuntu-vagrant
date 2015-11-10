@@ -2,10 +2,11 @@
 set -e
 set -x
 
+use_lxc_1_1=${USE_LXC_1_1:-0}
 usernet_count=10
 
 # Install apt repository for LXC version 1.1.x so that we can create CentOS 7 containers
-if [ ! -f /etc/apt/sources.list.d/ubuntu-lxc-lxc-stable-trusty.list ]; then
+if [ $USE_LXC_1_1 -ne 0 -a ! -f /etc/apt/sources.list.d/ubuntu-lxc-lxc-stable-trusty.list ]; then
   sudo add-apt-repository -y -s ppa:ubuntu-lxc/lxc-stable
   sudo apt-get update
 fi

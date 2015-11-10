@@ -3,7 +3,7 @@
 
 provision_script = <<SCRIPT
 if [ ! -f ~/.ready_to_create_containers ]; then
-  sh /vagrant/setup_lxc.sh
+  USE_LXC_1_1=1 sh /vagrant/setup_lxc.sh
   touch ~/.ready_to_create_containers
 else
   sh /vagrant/create_containers.sh
